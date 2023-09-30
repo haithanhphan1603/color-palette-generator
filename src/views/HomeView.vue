@@ -1,14 +1,18 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted, computed, watchEffect } from 'vue'
-import ColorCard from './ColorCard.vue'
+import ColorCard from '../components/ColorCard.vue'
+import Spinner from '../components/Spinner.vue'
 
 const colors = ref([])
+const isLoading = ref(false)
+
 const hexColors = computed(() => {
   return colors.value.map((color) => rgbToHex(color[0], color[1], color[2]))
 })
 
 const getColors = async () => {
+  isLoading.value = true
   const response = await axios.post(
     'http://colormind.io/api/',
     {
@@ -21,6 +25,7 @@ const getColors = async () => {
     }
   )
   colors.value = response.data.result
+  isLoading.value = false
 }
 
 function componentToHex(c) {
@@ -62,7 +67,12 @@ onMounted(() => {
     <header>
       <h1 class="text-3xl pt-16 text-center">Color pallette generator</h1>
     </header>
-    <main class="pt-24">
+
+    <div v-if="isLoading" class="flex absolute inset-0 justify-center items-center">
+      <Spinner />
+    </div>
+
+    <main v-else class="pt-24">
       <div class="flex fitems-center justify-center">
         <ColorCard
           class="cursor-pointer"
