@@ -65,14 +65,14 @@ onMounted(() => {
 <template>
   <div class="bg-slate-100 h-screen">
     <header>
-      <h1 class="text-3xl pt-16 text-center">Color pallette generator</h1>
+      <h1 class="text-3xl font-medium pt-16 text-center">Color pallette generator</h1>
     </header>
 
     <div v-if="isLoading" class="flex absolute inset-0 justify-center items-center">
       <Spinner />
     </div>
 
-    <main v-else class="pt-24">
+    <main v-else class="pt-16">
       <div class="flex fitems-center justify-center">
         <ColorCard
           class="cursor-pointer"
@@ -84,7 +84,7 @@ onMounted(() => {
         >
         </ColorCard>
       </div>
-      <div class="pt-5 flex flex-col items-center justify-center">
+      <div class="pt-10 flex flex-col items-center justify-center">
         <button
           class="py-4 px-6 font-semibold rounded-lg shadow-md text-white bg-indigo-500 hover:bg-indigo-700"
           @click="getColors"
