@@ -92,7 +92,7 @@ onMounted(() => {
           Generate new pallette
         </button>
         <div
-          class="cursor-default border m-3 p-3 rounded-3xl bg-white text-gray-700 hidden md:block"
+          class="cursor-default border m-6 p-3 rounded-3xl bg-white text-gray-700 hidden md:block"
         >
           <p class="text-sm text-center flex items-center">
             Click to copy individual color. Press "C" to copy pallete
